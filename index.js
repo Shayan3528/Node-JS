@@ -1,15 +1,13 @@
-const EventEmitter = require("events");
-const emitter = new EventEmitter();
 
-emitter.on("bellring",({period,name})=>{
-    console.log(`We need to run because ${period} ended. ${name} `);
+const School = require('./school');
+const school = new School();
+
+school.on("bell",({period,text})=>{
+    console.log(`we need to run because ${period} ${text}`);
+
 })
 
-setTimeout(()=>{
-    emitter.emit("bellring",{
-        period:"2nd Period",
-        name:"shimulkandi college",
-    });
-},3000);
+
+school.startPeriod();
 
 
